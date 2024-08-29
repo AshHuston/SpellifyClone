@@ -5,63 +5,63 @@ def getRandom():
     url = 'https://api.scryfall.com/cards/random'
     while(True):
         request = requests.get(url)
-        cardJson = request.json()
-        if cardJson['type_line'] != None:
+        card_json = request.json()
+        if card_json['type_line'] != None:
             break
 
-    if 'name' in cardJson:
-        cardname = cardJson['name']
+    if 'name' in card_json:
+        cardname = card_json['name']
     else:
         cardname = None
 
-    if 'mana_cost' in cardJson:
-        manaCost = cardJson['mana_cost']
+    if 'mana_cost' in card_json:
+        mana_cost = card_json['mana_cost']
     else:
-        manaCost = None
+        mana_cost = None
 
-    if 'type_line' in cardJson:
-        typeline = cardJson['type_line']
+    if 'type_line' in card_json:
+        typeline = card_json['type_line']
     else:
         typeline = None
 
-    if "oracle_text" in cardJson:
-        oracleText = cardJson['oracle_text']
+    if "oracle_text" in card_json:
+        oracle_text = card_json['oracle_text']
     else:
-        oracleText = None
+        oracle_text = None
 
-    if "power" in cardJson:
-        power = cardJson['power']
+    if "power" in card_json:
+        power = card_json['power']
     else:
         power = None
 
-    if "toughness" in cardJson:
-        toughness = cardJson['toughness']
+    if "toughness" in card_json:
+        toughness = card_json['toughness']
     else:
         toughness = None
 
-    if "loyalty" in cardJson:
-        loyalty = cardJson['loyalty'] 
+    if "loyalty" in card_json:
+        loyalty = card_json['loyalty'] 
     else:
         loyalty = None
 
-    if "defense" in cardJson:
-        battleDefense = cardJson['defense'] 
+    if "defense" in card_json:
+        battle_defense = card_json['defense'] 
     else:
-        battleDefense = None
+        battle_defense = None
 
-    if 'image_uris' in cardJson:
-        imageURI = cardJson['image_uris']['png']
+    if 'image_uris' in card_json:
+        imageURI = card_json['image_uris']['png']
         image = requests.get(imageURI).content
 
     cardInfo = {
         'name': cardname,
-        'manaCost': manaCost,
+        'mana_cost': mana_cost,
         'typeline': typeline,
-        'text': oracleText,
+        'text': oracle_text,
         'power': power, 
         'toughness': toughness,
         'loyalty': loyalty,
-        'battleDefense': battleDefense,
+        'battle_defense': battle_defense,
         'image': image
     }
     return cardInfo
