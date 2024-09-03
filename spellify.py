@@ -36,13 +36,6 @@ def add_spaces_between_characters(text):
         outputText += f"{each} "
     return outputText
 
-def update_image(lable):
-    global img
-    global root
-    lable.configure(image=img)
-    time.sleep(2)
-    update_image(lable)
-
 def runWindow():
     global img
     global root
@@ -50,7 +43,6 @@ def runWindow():
     root.geometry("298x416")
     tk_image = ImageTk.PhotoImage(img)
     label = tk.Label(root, image=tk_image, compound='center')
-    update_image(label)
     label.pack()
     root.mainloop()
 
